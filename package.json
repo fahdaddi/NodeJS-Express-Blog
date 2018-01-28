@@ -1,0 +1,39 @@
+{
+  "name": "blogbewserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "a",
+    "simple",
+    "interactif",
+    "blog",
+    "that",
+    "i",
+    "aim",
+    "to",
+    "use",
+    "in",
+    "the",
+    "future",
+    "for",
+    "my",
+    "projects\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C"
+  ],
+  "author": "Fahd ADDI",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "connect-flash": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "^1.15.6",
+    "express-validator": "*",
+    "moment": "^2.20.1",
+    "mongoose": "*",
+    "pug": "2.0.0-beta6"
+  }
+}
