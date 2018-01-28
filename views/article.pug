@@ -1,4 +1,8 @@
 extends layout
 
 block content
-  h1 #{title}
+  h1 #{article.title}
+  .jumbotron
+    p(style="text-align:center") this Article is published by #{article.author}
+    p
+      | #{article.article_body}

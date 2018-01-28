@@ -2,3 +2,19 @@ extends layout
 
 block content
   h1 #{title}
+  each article, i in articles
+    .jumbotron
+      .row
+        .col-9
+          h3 #{article.title}
+        .col-3
+          h6 #{article.author}
+      br
+      .row
+        .col-1
+        .col-8
+          p
+          | subtitle
+        .col-1
+        .col-2
+          a(class="btn btn-outline-primary", href='/articles/article/'+article._id) Read More

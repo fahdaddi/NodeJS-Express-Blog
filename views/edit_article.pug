@@ -2,3 +2,21 @@ extends layout
 
 block content
   h1 #{title}
+  form(method='post' , action='/articles/edit/'+category._id)
+    .form-group
+      label Title
+      input.form-control(type='text', name ="title", value=category.title)
+    .form-group
+      label subtitle
+      input.form-control(type='text', name ="subtitle" , value=category.subtitle)
+    .form-group
+      label author
+      input.form-control(type='text', name ="author" , value=category.author)
+    .form-group
+      label Article's body
+      textarea.form-control(name ="article_body") #{category.article_body}
+    .row
+      .col-11
+        input.btn.primary(type='submit' , name="submit" , value="Update")
+      .col-1
+        a.btn.btn-btn-link(href='/manage/articles') Cancel
