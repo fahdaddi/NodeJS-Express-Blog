@@ -78,20 +78,27 @@ route.delete('/categories/delete/:cat_id',(req,res,next)=>{
 
 //adding category
 route.get('/articles/add',(req,res,next)=>{
-  res.render('add_article',{
-    title:"Add Article"
-  });
+  Category.getCategories((err,categories)=>{
+    if(err) res.send(err);
+    res.render('add_article',{
+      title:"Add Article",
+      categories:categories
+    });
+  })
 });
 
-//showing categories to be managed
+//showing articles to be managed
 route.get('/articles',(req,res,next)=>{
   Article.getArticles((err,articles)=>{
     if(err){
       res.send(err);
     }
-    res.render('manage_articles',{
-      title:"Manage Articles",
-      articles : articles
+    Category.getCategories((err,categories)=>{
+      res.render('manage_articles',{
+        title:"Manage Articles",
+        articles : articles,
+        categories : categories
+      });
     });
   });
 });
@@ -99,13 +106,16 @@ route.get('/articles',(req,res,next)=>{
 //editing a category bi it's id
 route.get('/articles/edit/:article_id',(req,res,next)=>{
   const query = {_id : req.params.article_id };
-  Article.getArticleById(query,(err,category)=>{
+  Article.getArticleById(query,(err,article)=>{
     if(err){
       res.send(err);
     }
-    res.render('edit_article',{
-      title : "Edit Article",
-      category : category
+    Category.getCategories((err,categories)=>{
+      res.render('edit_article',{
+        title : "Edit Article",
+        categories : categories,
+        article : article
+      });
     });
   });
 });

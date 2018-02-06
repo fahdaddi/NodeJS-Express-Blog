@@ -1,20 +1,28 @@
 extends layout
 
 block content
-  h1 #{title}
-  each article, i in articles
-    .jumbotron
-      .row
-        .col-9
-          h3 #{article.title}
-        .col-3
-          h6 #{article.author}
-      br
-      .row
-        .col-1
-        .col-8
-          p
-          | subtitle
-        .col-1
-        .col-2
-          a(class="btn btn-outline-primary", href='/articles/article/'+article._id) Read More
+  .container(style="background-color : black;")
+    h1.text-center(style="color : grey") #{title}
+    each article, i in articles
+      .jumbotron
+        .row
+          .col-9
+            h3 #{article.title}
+          .col-1
+          .col-2.text-center
+            label By
+            h6 #{article.author}
+        br
+        .row
+          .col-1
+          .col-5
+            label Subtitle :
+            p
+              | #{article.subtitle}
+          .col-4
+            each category, i in categories
+              if( article.category == category._id)
+                label Category :
+                h6 #{category.title}
+          .col-2.text-center
+            a(class="btn btn-outline-primary", href='/articles/article/'+article._id) Read More

@@ -2,19 +2,27 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='post' , action='/articles/edit/'+category._id)
+  form(method='post' , action='/articles/edit/'+article._id)
     .form-group
       label Title
-      input.form-control(type='text', name ="title", value=category.title)
+      input.form-control(type='text', name ="title", value=article.title)
     .form-group
       label subtitle
-      input.form-control(type='text', name ="subtitle" , value=category.subtitle)
+      input.form-control(type='text', name ="subtitle" , value=article.subtitle)
     .form-group
       label author
-      input.form-control(type='text', name ="author" , value=category.author)
+      input.form-control(type='text', name ="author" , value=article.author)
+    .form-group
+      label Category
+      select.form-control(name="category")
+        each category, i in categories
+          if(article.category == category._id)
+            option(value=category._id, selected) #{category.title}
+          else
+            option(value=category._id) #{category.title}
     .form-group
       label Article's body
-      textarea.form-control(name ="article_body") #{category.article_body}
+      textarea.form-control(name ="article_body") #{article.article_body}
     .row
       .col-11
         input.btn.primary(type='submit' , name="submit" , value="Update")

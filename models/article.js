@@ -15,13 +15,26 @@ const articleSchema = mongoose.Schema({
   article_body:{
     type : String
   },
-  date:{
-    type  : Date
+  category : {
+    type : String
+  },
+  created_at:{
+    type  : Date,
+    default : Date.now
   },
   comments:[{
-    user : String,
-    text : String,
-    date : String
+    comment_body : {
+      type : String
+    },
+    comment_author : {
+      type : String
+    },
+    comment_email : {
+      type : String
+    },
+    comment_date : {
+      type : String
+    }
   }]
 });
 
@@ -46,4 +59,10 @@ module.exports.setArticle = function(query,article,options,callback){
 
 module.exports.removeArticleById = function(query,callback){
   Article.remove(query,callback);
+}
+
+module.exports.addComent = function(query,comment,options,callback){
+  let article = Article.findById(query);
+  article.comments.push(comment)
+  Article.findOneAndUpdate(query,article,options,callback);
 }

@@ -11,6 +11,9 @@ block content
       .row
         .col-8
           h4 #{article.title}
+          each category, i in categories
+            if(article.category == category._id)
+              label Category : #{category.title}
           p #{article.subtitle}
         .col-2
           a(class='btn btn-primary' href='/manage/articles/edit/'+article._id) Edit

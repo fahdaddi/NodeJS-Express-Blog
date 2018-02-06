@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  h1 #{article.title}
+  h1.text-center #{article.title}
   .jumbotron
-    p(style="text-align:center") this Article is published by #{article.author}
-    p
-      | #{article.article_body}
+
+    p.text-center this Article is published by #{article.author} in #{category.title}
+    p.text-center
+      strong
+        | #{article.article_body}

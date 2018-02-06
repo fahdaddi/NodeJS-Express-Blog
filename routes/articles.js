@@ -1,13 +1,17 @@
 const express = require('express');
+const Category = require('../models/category');
 const Article = require('../models/article');
 const route = express.Router();
 
 route.get('/',(req,res,next)=>{
   Article.getArticles((err,articles)=>{
     if(err) res.send(err);
-    res.render("articles",{
-      title:"Articles",
-      articles : articles
+    Category.getCategories((err,categories)=>{
+      res.render("articles",{
+        title:"Articles",
+        articles : articles,
+        categories : categories
+      });
     });
   });
 });
@@ -18,6 +22,7 @@ route.post('/add',(req,res,next)=>{
   article.title = req.body.title;
   article.subtitle = req.body.subtitle;
   article.author = req.body.author;
+  article.category = req.body.category;
   article.article_body = req.body.article_body;
   article.comments = [];
   Article.addArticle(article,(err,article)=>{
@@ -37,7 +42,8 @@ route.post('/edit/:article_id',(req,res,next)=>{
     title : req.body.title,
     subtitle : req.body.subtitle,
     author : req.body.author,
-    article_body : req.body.article_body
+    article_body : req.body.article_body,
+    category : req.body.category
   }
   Article.setArticle(query,updatedarticle,{},(err,article)=>{
     if(err){
@@ -52,8 +58,12 @@ route.get('/article/:article_id',(req,res,next)=>{
   const query = {"_id": req.params.article_id};
   Article.getArticleById(query,(err,article)=>{
     if(err) res.send(err);
-    res.render('article',{
-      article : article
+    const queryCat = {"_id": article.category}
+    Category.getCategoryById(queryCat,(err, category)=> {
+      res.render('article',{
+        article : article,
+        category : category
+      });
     });
   });
 });

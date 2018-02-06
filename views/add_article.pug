@@ -7,11 +7,16 @@ block content
       label Title
       input.form-control(type='text', name ="title")
     .form-group
-      label subtitle
+      label Subtitle
       input.form-control(type='text', name ="subtitle")
     .form-group
       label author
       input.form-control(type='text', name ="author")
+    .form-group
+      label Category
+      select.form-control(name="category")
+        each category, i in categories
+          option(value=category._id) #{category.title}
     .form-group
       label Article's body
       textarea.form-control(name ="article_body")
